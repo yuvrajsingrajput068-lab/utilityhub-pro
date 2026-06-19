@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UtilityHub Pro - All-in-One Utility Tools</title>
+
+<meta name="description" content="Age Calculator, QR Generator, Password Generator, Image Compressor, BMI Calculator, GST Calculator, Scientific Calculator, Timer, Tap Counter and Unit Converter.">
+
+<meta name="keywords" content="utility tools, age calculator, qr code generator, password generator, bmi calculator, gst calculator">
+
+<meta name="theme-color" content="#6c63ff">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="bg-blur blur1"></div>
+<div class="bg-blur blur2"></div>
+
+<header class="header">
+    <div class="logo">
+        UtilityHub Pro
+    </div>
+
+    <button id="themeToggle" class="theme-btn">
+        🌙
+    </button>
+</header>
+
+<section class="hero">
+    <h1>All-in-One Utility Tools</h1>
+    <p>
+        Fast • Responsive • Offline Ready • Mobile Friendly
+    </p>
+</section>
+
+<main class="container">
+
+    <!-- Age Calculator -->
+    <section class="tool-card">
+        <h2>Age Calculator</h2>
+
+        <input type="date" id="birthDate">
+
+        <div class="btn-group">
+            <button onclick="calculateAge()">Calculate</button>
+            <button onclick="copyText('ageResult')">Copy</button>
+            <button onclick="resetAge()">Reset</button>
+        </div>
+
+        <p id="ageResult"></p>
+    </section>
+
+    <!-- QR Generator -->
+    <section class="tool-card">
+        <h2>QR Code Generator</h2>
+
+        <input
+            type="text"
+            id="qrText"
+            placeholder="Enter text or URL"
+        >
+
+        <div class="btn-group">
+            <button onclick="generateQR()">Generate</button>
+            <button onclick="downloadQR()">
+    Download QR
+</button>
+            <button onclick="resetQR()">Reset</button>
+        </div>
+
+        <div id="qrContainer"></div>
+    </section>
+
+    <!-- Password Generator -->
+    <section class="tool-card">
+        <h2>Password Generator</h2>
+
+        <input
+            type="number"
+            id="passwordLength"
+            value="12"
+            min="4"
+            max="50"
+        >
+
+        <div class="btn-group">
+            <button onclick="generatePassword()">Generate</button>
+            <button onclick="copyText('passwordResult')">Copy</button>
+            <button onclick="resetPassword()">Reset</button>
+        </div>
+
+        <p id="passwordResult"></p>
+    </section>
+
+    <!-- Image Compressor -->
+    <section class="tool-card">
+        <h2>Image Compressor</h2>
+
+        <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+        >
+
+        <div class="btn-group">
+            <button onclick="compressImage()">
+                Compress
+            </button>
+            <button onclick="resetCompressor()">
+                Reset
+            </button>
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+        <a id="downloadImage" download="compressed-image.jpg">
+            Download Compressed Image
+        </a>
+    </section>
+
+    <!-- BMI -->
+    <section class="tool-card">
+        <h2>BMI Calculator</h2>
+
+        <input
+            type="number"
+            id="weight"
+            placeholder="Weight (kg)"
+        >
+
+        <input
+            type="number"
+            id="height"
+            placeholder="Height (cm)"
+        >
+
+        <div class="btn-group">
+            <button onclick="calculateBMI()">Calculate</button>
+            <button onclick="copyText('bmiResult')">Copy</button>
+            <button onclick="resetBMI()">Reset</button>
+        </div>
+
+        <p id="bmiResult"></p>
+    </section>
+
+    <!-- GST -->
+    <section class="tool-card">
+        <h2>GST Calculator</h2>
+
+        <input
+            type="number"
+            id="gstAmount"
+            placeholder="Amount"
+        >
+
+        <input
+            type="number"
+            id="gstRate"
+            placeholder="GST %"
+        >
+
+        <div class="btn-group">
+            <button onclick="calculateGST()">Calculate</button>
+            <button onclick="copyText('gstResult')">Copy</button>
+            <button onclick="resetGST()">Reset</button>
+        </div>
+
+        <p id="gstResult"></p>
+    </section>
+
+    <!-- Scientific Calculator -->
+    <section class="tool-card">
+        <h2>Scientific Calculator</h2>
+
+        <input
+            type="text"
+            id="calcDisplay"
+            readonly
+        >
+
+        <div class="calculator-grid">
+
+            <button onclick="appendCalc('7')">7</button>
+            <button onclick="appendCalc('8')">8</button>
+            <button onclick="appendCalc('9')">9</button>
+            <button onclick="appendCalc('/')">÷</button>
+
+            <button onclick="appendCalc('4')">4</button>
+            <button onclick="appendCalc('5')">5</button>
+            <button onclick="appendCalc('6')">6</button>
+            <button onclick="appendCalc('*')">×</button>
+
+            <button onclick="appendCalc('1')">1</button>
+            <button onclick="appendCalc('2')">2</button>
+            <button onclick="appendCalc('3')">3</button>
+            <button onclick="appendCalc('-')">−</button>
+
+            <button onclick="appendCalc('0')">0</button>
+            <button onclick="appendCalc('.')">.</button>
+            <button onclick="calculateExpression()">=</button>
+            <button onclick="appendCalc('+')">+</button>
+
+            <button onclick="appendCalc('Math.sin(')">
+                sin
+            </button>
+
+            <button onclick="appendCalc('Math.cos(')">
+                cos
+            </button>
+
+            <button onclick="appendCalc('Math.tan(')">
+                tan
+            </button>
+
+            <button onclick="appendCalc('Math.sqrt(')">
+                √
+            </button>
+
+        </div>
+
+        <div class="btn-group">
+            <button onclick="clearCalc()">Clear</button>
+        </div>
+    </section>
+
+    <!-- Timer -->
+    <section class="tool-card">
+        <h2>Countdown Timer</h2>
+
+        <input
+            type="number"
+            id="timerMinutes"
+            placeholder="Minutes"
+        >
+
+        <div class="btn-group">
+            <button onclick="startTimer()">Start</button>
+            <button onclick="resetTimer()">Reset</button>
+        </div>
+
+        <p id="timerDisplay">00:00</p>
+    </section>
+
+    <!-- Tap Counter -->
+    <section class="tool-card">
+        <h2>Tap Counter</h2>
+
+        <p id="tapCount">0</p>
+
+        <div class="btn-group">
+            <button onclick="increaseTap()">
+                Tap +
+            </button>
+
+            <button onclick="resetTap()">
+                Reset
+            </button>
+        </div>
+    </section>
+
+    <!-- Unit Converter -->
+    <section class="tool-card">
+        <h2>Unit Converter</h2>
+
+        <input
+            type="number"
+            id="kmInput"
+            placeholder="Kilometers"
+        >
+
+        <div class="btn-group">
+            <button onclick="convertKM()">
+                Convert
+            </button>
+
+            <button onclick="copyText('unitResult')">
+                Copy
+            </button>
+
+            <button onclick="resetUnit()">
+                Reset
+            </button>
+        </div>
+
+        <p id="unitResult"></p>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+<section class="tool-card">
+    <h2>PDF Generator</h2>
+
+    <textarea
+        id="pdfText"
+        rows="6"
+        placeholder="Write your text here..."
+    ></textarea>
+
+    <div class="btn-group">
+        <button onclick="generatePDF()">
+            Generate PDF
+        </button>
+
+        <button onclick="resetPDF()">
+            Reset
+        </button>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+
+<footer class="footer">
+    <p>
+        © 2026 UtilityHub Pro
+    </p>
+</footer>
+
+</body>
+</html>
