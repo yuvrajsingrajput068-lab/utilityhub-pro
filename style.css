@@ -1,0 +1,317 @@
+:root{
+    --bg:#f4f7ff;
+    --card:rgba(255,255,255,0.25);
+    --border:rgba(255,255,255,0.3);
+    --text:#1d1d1d;
+    --primary:#6c63ff;
+    --secondary:#8b85ff;
+    --shadow:0 8px 32px rgba(31,38,135,0.15);
+}
+
+body.dark{
+    --bg:#0f172a;
+    --card:rgba(15,23,42,0.55);
+    --border:rgba(255,255,255,0.08);
+    --text:#ffffff;
+    --primary:#7c73ff;
+    --secondary:#9b94ff;
+    --shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+    transition:0.3s ease;
+}
+
+/* Background Blur */
+
+.bg-blur{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    z-index:-1;
+    opacity:0.5;
+}
+
+.blur1{
+    width:250px;
+    height:250px;
+    background:#6c63ff;
+    top:-50px;
+    left:-50px;
+}
+
+.blur2{
+    width:250px;
+    height:250px;
+    background:#ff6bd6;
+    right:-50px;
+    bottom:-50px;
+}
+
+/* Header */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 20px;
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(15px);
+    z-index:999;
+}
+
+.logo{
+    font-size:1.2rem;
+    font-weight:700;
+}
+
+.theme-btn{
+    border:none;
+    cursor:pointer;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    font-size:18px;
+    background:var(--primary);
+    color:white;
+}
+
+/* Hero */
+
+.hero{
+    text-align:center;
+    padding:30px 15px;
+}
+
+.hero h1{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    opacity:0.8;
+}
+
+/* Container */
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    gap:20px;
+    padding-bottom:50px;
+}
+
+/* Cards */
+
+.tool-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(20px);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:var(--shadow);
+    animation:fadeIn 0.5s ease;
+}
+
+.tool-card h2{
+    margin-bottom:15px;
+    font-size:1.2rem;
+}
+
+/* Inputs */
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,0.15);
+    color:var(--text);
+    margin-bottom:12px;
+    outline:none;
+}
+
+input::placeholder{
+    color:gray;
+}
+
+/* Buttons */
+
+.btn-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    padding:12px 16px;
+    border-radius:12px;
+    background:var(--primary);
+    color:white;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    background:var(--secondary);
+}
+
+/* Results */
+
+p{
+    word-wrap:break-word;
+}
+
+#ageResult,
+#passwordResult,
+#bmiResult,
+#gstResult,
+#unitResult,
+#timerDisplay{
+    margin-top:12px;
+    font-weight:600;
+    font-size:1rem;
+}
+
+/* Calculator */
+
+.calculator-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.calculator-grid button{
+    padding:15px;
+    font-size:16px;
+}
+
+#calcDisplay{
+    text-align:right;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* QR */
+
+#qrContainer{
+    margin-top:15px;
+    text-align:center;
+}
+
+#qrContainer img{
+    max-width:220px;
+    width:100%;
+}
+
+/* Canvas */
+
+canvas{
+    width:100%;
+    display:none;
+    margin-top:15px;
+    border-radius:12px;
+}
+
+/* Download Button */
+
+#downloadImage{
+    display:none;
+    margin-top:12px;
+    text-decoration:none;
+    color:white;
+    background:var(--primary);
+    padding:12px;
+    border-radius:12px;
+    display:inline-block;
+}
+
+/* Tap Counter */
+
+#tapCount{
+    font-size:2rem;
+    text-align:center;
+    margin:15px 0;
+    font-weight:bold;
+}
+
+/* Timer */
+
+#timerDisplay{
+    text-align:center;
+    font-size:2rem;
+    margin-top:15px;
+}
+
+/* Footer */
+
+.footer{
+    text-align:center;
+    padding:20px;
+    opacity:0.8;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Tablet */
+
+@media(min-width:768px){
+
+    .container{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:2.5rem;
+    }
+}
+
+/* Desktop */
+
+@media(min-width:1100px){
+
+    .container{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+    .hero h1{
+        font-size:3rem;
+    }
+}
